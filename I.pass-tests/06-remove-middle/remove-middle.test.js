@@ -1,6 +1,6 @@
-var removeMiddle = require("./remove-middle");
+const { removeMiddle } = require("./remove-middle");
 
-test("Remove middle", function() {
+test("Remove middle", function () {
   var words = ["mouse", "giraffe", "queen", "window", "bottle"];
 
   var expectedWords = ["mouse", "giraffe", "window", "bottle"];

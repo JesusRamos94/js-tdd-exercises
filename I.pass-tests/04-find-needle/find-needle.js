@@ -1,3 +1,7 @@
-function findNeedle(words) {}
+const findNeedle = (words, word) => {
+  return words.indexOf(word);
+};
 
-module.exports = findNeedle;
+module.exports = {
+  findNeedle,
+};
