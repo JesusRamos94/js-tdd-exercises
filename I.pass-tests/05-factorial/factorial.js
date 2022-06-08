@@ -9,6 +9,10 @@
 // note: factorial of 0 is 1
 
 const factorial = (int) => {
+  if (typeof int !== "number" || int < 0) {
+    throw new Error("Invalid param");
+  }
+
   let total = 1;
 
   for (let i = 1; i <= int; i++) {

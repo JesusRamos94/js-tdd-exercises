@@ -30,7 +30,7 @@ describe("given the addOne function", () => {
     expect(input).toEqual(unchanged);
   });
 
-  it("given the no input when it calls the function it will throw an error ", () => {
+  it("given an empty input when the function is called, it will throw an error", () => {
     // Arrange
 
     const expectedToThrow = () => addOne();
@@ -40,7 +40,7 @@ describe("given the addOne function", () => {
     expect(expectedToThrow).toThrowError("Invalid param");
   });
 
-  it("given the number when it calls the function it will throw an error ", () => {
+  it("given a number when you call the function it will throw an error ", () => {
     // Arrange
 
     const expectedToThrow = () => addOne(12);
@@ -160,7 +160,7 @@ describe("given the addOne function", () => {
     expect(expectedToThrow).toThrowError("Invalid param");
   });
 
-  it("given the input a empty array undefined when it calls the function it will throw an error ", () => {
+  it("given the input a empty array when it calls the function it will throw an error ", () => {
     // Arrange
 
     const expectedToThrow = () => addOne([]);
@@ -170,7 +170,7 @@ describe("given the addOne function", () => {
     expect(expectedToThrow).toThrowError("Invalid param");
   });
 
-  it("given the input array with string  when it calls the function it will throw an error ", () => {
+  it("given the input array with string when it calls the function it will throw an error ", () => {
     // Arrange
 
     const expectedToThrow = () => addOne([1, "string", "string"]);
@@ -180,7 +180,7 @@ describe("given the addOne function", () => {
     expect(expectedToThrow).toThrowError("Invalid param");
   });
 
-  it("given the input array with object  when it calls the function it will throw an error ", () => {
+  it("given the input array with an object when you call the function it will throw an error ", () => {
     // Arrange
 
     const expectedToThrow = () =>

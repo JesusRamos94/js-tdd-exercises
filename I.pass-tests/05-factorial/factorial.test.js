@@ -65,4 +65,88 @@ describe("Factorial", function() {
     expect(result4).toEqual(exp4);
     expect(result5).toEqual(exp5);
   });
+
+  it("given an empty input when the function is called, it will throw an error", () => {
+    // Arrange
+
+    const expectedToThrow = () => factorial();
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param");
+  });
+
+  it("given the input undefined when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => factorial(undefined);
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param");
+  });
+
+  it("given the input null when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => factorial(null);
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param");
+  });
+
+  it("given the input false when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => factorial(false);
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param");
+  });
+
+  it("given the input true when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => factorial(true);
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param");
+  });
+
+
+
+  it("given the input a string when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => factorial("MobDev");
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param");
+  });
+
+  it("given the input array when you call the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () =>
+      factorial(["Jesus", "Ramos"]);
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param");
+  });
+
+  it("given the input array with an object when you call the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () =>
+      factorial({ name: "Jesus", lastName: "Ramos" });
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param");
+  });
 });
