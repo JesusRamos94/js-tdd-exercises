@@ -40,6 +40,16 @@ describe("given the addOne function", () => {
     expect(expectedToThrow).toThrowError("Invalid param");
   });
 
+  it("given the number when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => addOne(12);
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param");
+  });
+
   it("given the input undefined when it calls the function it will throw an error ", () => {
     // Arrange
 
@@ -84,6 +94,97 @@ describe("given the addOne function", () => {
     // Arrange
 
     const expectedToThrow = () => addOne(-1);
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param");
+  });
+
+  it("given the input a number when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => addOne(4);
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param");
+  });
+
+  it("given the input a string when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => addOne("MobDev");
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param");
+  });
+
+  it("given the input a array null when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => addOne([null, null, null]);
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param");
+  });
+
+  it("given the input a array true when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => addOne([true, true, true]);
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param");
+  });
+
+  it("given the input a array false when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => addOne([false, false, false]);
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param");
+  });
+
+  it("given the input a array undefined when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => addOne([undefined, undefined, undefined]);
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param");
+  });
+
+  it("given the input a empty array undefined when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => addOne([]);
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param");
+  });
+
+  it("given the input array with string  when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => addOne([1, "string", "string"]);
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param");
+  });
+
+  it("given the input array with object  when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () =>
+      addOne([{ nombre: "Jesus", apellido: "Ramos" }]);
 
     // Act & Assert
 

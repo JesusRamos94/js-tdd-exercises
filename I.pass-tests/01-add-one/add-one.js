@@ -1,5 +1,13 @@
 const addOne = (numbers) => {
-  if (!numbers || numbers === true || numbers < 0) {
+  if (
+    !Array.isArray(numbers) ||
+    numbers.some((i) => typeof i === "null") ||
+    numbers.some((i) => typeof i === "boolean") ||
+    numbers.some((i) => typeof i === "undefined") ||
+    numbers.length === 0 ||
+    numbers.some((i) => typeof i === "string") ||
+    numbers.some((i) => typeof i === "object")
+  ) {
     throw new Error("Invalid param");
   }
 
@@ -9,3 +17,4 @@ const addOne = (numbers) => {
 module.exports = {
   addOne,
 };
+
