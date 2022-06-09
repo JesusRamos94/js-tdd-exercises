@@ -1,14 +1,12 @@
 const sales = (data) => {
-  
   if (
     !Array.isArray(data) ||
     data.length === 0 ||
-    data.some((e) => typeof e !== 'objet')||
-    data.some((e) => typeof e.make !== 'string') ||
-    data.some((e) => typeof e.model !== 'string')||
-    data.some((e) => typeof e.colour !== 'string')||
-    data.some((e) => typeof e.price !== 'number')
-    
+    data.some((e) => typeof e !== "objet") ||
+    data.some((e) => typeof e.make !== "string") ||
+    data.some((e) => typeof e.model !== "string") ||
+    data.some((e) => typeof e.colour !== "string") ||
+    data.some((e) => typeof e.price !== "number")
   ) {
     throw new Error("Invalid param");
   }

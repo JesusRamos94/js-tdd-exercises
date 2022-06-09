@@ -6,7 +6,7 @@ const addNumbers = (numbers) => {
   ) {
     throw new Error("Invalid param");
   }
-  
+
   let total = 0;
 
   for (const number of numbers) {

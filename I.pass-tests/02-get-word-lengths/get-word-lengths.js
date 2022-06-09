@@ -7,11 +7,7 @@ const getWordLengths = (someWords) => {
     throw new Error("Invalid param");
   }
 
-  const newWordLengths = [];
-
-  for (let i = 0; i < someWords.length; i++) {
-    newWordLengths.push(someWords[i].length);
-  }
+  const newWordLengths = someWords.map((e) => e.length);
 
   return newWordLengths;
 };
