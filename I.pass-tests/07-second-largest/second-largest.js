@@ -1,8 +1,6 @@
 const secondLargest = (numbers) => {
   if (
-    !Array.isArray(numbers) ||
-    numbers.some((i) => typeof i !== "number") ||
-    numbers.length <= 1
+    isNotValidParam(numbers)
   ) {
     throw new Error("Invalid param");
   }
@@ -14,3 +12,21 @@ const secondLargest = (numbers) => {
 module.exports = {
   secondLargest,
 };
+const isNotValidParam = (numbers)=> {
+  return isNotArray(numbers) ||
+    valuesAreNotAString(numbers) ||
+    isSmallerEqualthanOne(numbers);
+}
+
+const isSmallerEqualthanOne = (numbers) =>{
+  return numbers.length <= 1;
+}
+
+const valuesAreNotAString = (numbers) =>{
+  return numbers.some((i) => typeof i !== "number");
+}
+
+const isNotArray = (numbers)=> {
+  return !Array.isArray(numbers);
+}
+

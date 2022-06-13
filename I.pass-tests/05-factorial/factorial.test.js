@@ -1,4 +1,4 @@
-var { factorial } = require("./factorial");
+const { factorial } = require("./factorial");
 
 // describe("Factorial", function() {
 //   test("Factorial", function() {

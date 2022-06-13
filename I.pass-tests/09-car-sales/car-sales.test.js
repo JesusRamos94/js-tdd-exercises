@@ -24,7 +24,7 @@ describe("Given the sales function", () => {
     const result = sales(carsSold);
 
     // Assert
-    expect(result).toEqual(totals);
+    expect(result).toEqual(totals);1
   });
 
   it("given an empty input when the function is called, it will throw an error", () => {

@@ -1,9 +1,6 @@
 const findNeedle = (words, word) => {
   if (
-    !Array.isArray(words) ||
-    words.some((i) => typeof i !== "string") ||
-    typeof word !== "string" ||
-    words.length === 0
+    isNotValidParam(words, word)
   ) {
     throw new Error("Invalid param");
   }
@@ -14,3 +11,26 @@ const findNeedle = (words, word) => {
 module.exports = {
   findNeedle,
 };
+const isNotValidParam = (words, word) => {
+  return isNotAnArray(words) ||
+    valuesAreNoTAString(words) ||
+    isNotAString(word) ||
+    isNotEmptyArray(words);
+}
+
+const valuesAreNoTAString=(words) => {
+  return words.some((i) => typeof i !== "string");
+}
+
+const isNotEmptyArray=(words)  =>{
+  return words.length === 0;
+}
+
+const isNotAString=(word) => {
+  return typeof word !== "string";
+}
+
+const isNotAnArray=(words) => {
+  return !Array.isArray(words);
+}
+

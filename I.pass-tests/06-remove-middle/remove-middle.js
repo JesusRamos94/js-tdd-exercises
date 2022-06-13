@@ -1,8 +1,6 @@
 const removeMiddle = (words) => {
   if (
-    !Array.isArray(words) ||
-    words.some((i) => typeof i !== "string") ||
-    words.length === 0
+    isNotValidParam(words)
   ) {
     throw new Error("Invalid param");
   }
@@ -19,3 +17,21 @@ const removeMiddle = (words) => {
 module.exports = {
   removeMiddle,
 };
+const isNotValidParam =(words) =>{
+  return isNotArray(words) ||
+    valuesAreNotAString(words) ||
+    isNotEmptyArray(words);
+}
+
+const isNotEmptyArray =(words)=> {
+  return words.length === 0;
+}
+
+const valuesAreNotAString =(words) =>{
+  return words.some((i) => typeof i !== "string");
+}
+
+const isNotArray =(words)=> {
+  return !Array.isArray(words);
+}
+

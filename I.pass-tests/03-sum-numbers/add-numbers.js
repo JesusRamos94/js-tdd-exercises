@@ -1,21 +1,31 @@
 const addNumbers = (numbers) => {
-  if (
-    !Array.isArray(numbers) ||
-    numbers.some((i) => typeof i !== "number") ||
-    numbers.length === 0
-  ) {
+  if (isNotValidParam(numbers)) {
     throw new Error("Invalid param");
   }
 
-  let total = 0;
-
-  for (const number of numbers) {
-    total = total + number;
-  }
-
-  return total;
+  return numbers.reduce(addAllElements);
 };
 
 module.exports = {
   addNumbers,
 };
+const isNotValidParam = (numbers) => {
+  return (
+    isNotAnArray(numbers) || isNotANumber(numbers) || isNotEmptyArray(numbers)
+  );
+};
+
+const isNotEmptyArray = (numbers) => {
+  return numbers.length === 0;
+};
+
+const isNotANumber = (numbers) => {
+  return numbers.some((i) => typeof i !== "number");
+};
+
+const isNotAnArray = (numbers) => {
+  return !Array.isArray(numbers);
+};
+const addAllElements = (acc, curr) => acc + curr;
+
+

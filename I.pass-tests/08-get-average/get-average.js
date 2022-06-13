@@ -3,7 +3,7 @@
 // be sure to exclude the strings
 
 const average = (array) => {
-  if (!Array.isArray(array) || array.length === 0) {
+  if (isNotValidParam(array)) {
     throw new Error("Invalid param");
   }
 
@@ -18,4 +18,15 @@ const average = (array) => {
 
 module.exports = {
   average,
+};
+const isNotValidParam = (array) => {
+  return isNotAnArray(array) || isNotEmptyArray(array);
+};
+
+const isNotEmptyArray = (array) => {
+  return array.length === 0;
+};
+
+const isNotAnArray = (array) => {
+  return !Array.isArray(array);
 };

@@ -9,7 +9,7 @@
 // note: factorial of 0 is 1
 
 const factorial = (int) => {
-  if (typeof int !== "number" || int < 0) {
+  if (isNotValidParam(int)) {
     throw new Error("Invalid param");
   }
 
@@ -24,4 +24,15 @@ const factorial = (int) => {
 
 module.exports = {
   factorial,
+};
+const isNotValidParam = (int) => {
+  return isNotANumber(int) || isNotANumberValid(int);
+};
+
+const isNotANumberValid = (int) => {
+  return int < 0;
+};
+
+const isNotANumber = (int) => {
+  return typeof int !== "number";
 };

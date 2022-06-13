@@ -1,17 +1,30 @@
 const getWordLengths = (someWords) => {
-  if (
-    !Array.isArray(someWords) ||
-    someWords.some((i) => typeof i !== "string") ||
-    someWords.length === 0
-  ) {
+  if (isNotValidParam(someWords)) {
     throw new Error("Invalid param");
   }
-
-  const newWordLengths = someWords.map((e) => e.length);
-
-  return newWordLengths;
+  return someWords.map(extractLengths);
 };
 
 module.exports = {
   getWordLengths,
 };
+const isNotValidParam = (someWords) => {
+  return (
+    isNotArray(someWords) ||
+    isNotAString(someWords) ||
+    isNotEmptyString(someWords)
+  );
+};
+
+const isNotEmptyString = (someWords) => {
+  return someWords.length === 0;
+};
+
+const isNotAString = (someWords) => {
+  return someWords.some((i) => typeof i !== "string");
+};
+
+const isNotArray = (someWords) => {
+  return !Array.isArray(someWords);
+};
+const extractLengths = (e) => e.length;
