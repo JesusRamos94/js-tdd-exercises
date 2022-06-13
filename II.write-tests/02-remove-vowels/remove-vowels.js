@@ -1,27 +1,47 @@
-function removeVowels(word) {
-  var characters = word.split("");
+const removeVowels = (word) => {
+if(isNotValidParam(word) ) {
+  throw new Error("Invalid param");
+}
+  const characters = word.split("");
 
-  var result = [];
+  const result = [];
 
-  characters.forEach(function(character) {
-    if (
-      character === "a" ||
-      character === "o" ||
-      character === "i" ||
-      character === "e" ||
-      character === "u"
-    ) {
-      result.push(character);
+  characters.forEach((character) => {
+    if (characterType(character)) {
+      return result.push("_");
     } else {
-      result.push("_");
+      return result.push(character);
     }
   });
 
   return result.join("");
+};
+
+module.exports = {
+  removeVowels,
+};
+
+const isNotValidParam = (word) => {
+  return isNotAString(word) || isNotAEmptyString(word);
 }
 
-module.exports = removeVowels;
+const isNotAEmptyString = (word) => {
+  return word.length === 0;
+}
 
+const isNotAString = (word) => {
+  return typeof word !== "string";
+}
+
+const characterType = (character) => {
+  return (
+    character === "a" ||
+    character === "o" ||
+    character === "i" ||
+    character === "e" ||
+    character === "u"
+  );
+}
 /*
   Let's trace this piece of code - what is the value of result with this input
 

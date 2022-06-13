@@ -17,6 +17,7 @@ const removeMiddle = (words) => {
 module.exports = {
   removeMiddle,
 };
+
 const isNotValidParam =(words) =>{
   return isNotArray(words) ||
     valuesAreNotAString(words) ||
