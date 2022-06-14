@@ -3,7 +3,7 @@ const { getRepos } = require("./async-1");
 jest.mock("node-fetch");
 
 describe("given the getRepos Function", () => {
-  it("http ok, status 200", () => {
+  it("Given the http query with json Object will return a resolved promise", () => {
     // arrange
     const url = "https://api.github.com/users/kabaros/repos";
     fetch.mockImplementation(() => {
@@ -19,17 +19,15 @@ describe("given the getRepos Function", () => {
     });
   });
 
-  it("resource not found", () => {
+  it("given the http query will return resource not found Status 404", () => {
     // arrange
     const url = "";
     fetch.mockImplementation(() => {
-      return Promise.reject({
-        json: () => [{ error: 404 }],
-      });
+      return Promise.reject({ status: 404 });
     });
     // act && assert
     return getRepos(url).catch((result) => {
-      expect(result).rejects.toThrow("error");
+      expect(result.status).toEqual(404);
     });
   });
 });

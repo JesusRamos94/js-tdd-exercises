@@ -2,8 +2,8 @@ const { getRepos } = require("./async-2");
 const { fetcher } = require("./fetcher");
 jest.mock("./fetcher");
 
-describe("http ok, status 200", () => {
-  it("gets a list of repositories names (with mock)", () => {
+describe("given the getRepos function", () => {
+  it("Given the http query with json Object will return a resolved promise", () => {
     // arrange
     //fetcher.mockResolvedValue([{ name: "js-exercises" }]);
     const url = "https://api.github.com/users/kabaros/repos";
