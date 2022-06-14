@@ -3,7 +3,7 @@ const { getRepos } = require("./async-1");
 jest.mock("node-fetch");
 
 describe("given the getRepos Function", () => {
-  it("gets a list of repositories names", () => {
+  it("http ok, status 200", () => {
     // arrange
     const url = "https://api.github.com/users/kabaros/repos";
     fetch.mockImplementation(() => {
@@ -19,7 +19,7 @@ describe("given the getRepos Function", () => {
     });
   });
 
-  it("hola", () => {
+  it("resource not found", () => {
     // arrange
     const url = "";
     fetch.mockImplementation(() => {
