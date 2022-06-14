@@ -8,7 +8,7 @@ const getRepos = (repoName) => {
       });
     })
     .catch((error) => {
-      return error;
+      throw  error;
     });
 };
 
