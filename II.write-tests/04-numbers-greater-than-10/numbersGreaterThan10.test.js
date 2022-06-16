@@ -32,7 +32,7 @@ describe("Given the largerThanTe function", () => {
 
     // Act & Assert
 
-    expect(expectedToThrow).toThrowError("Invalid param");
+    expect(expectedToThrow).toThrowError("");
   });
 
   it("given the input undefined when it calls the function it will throw an error ", () => {
