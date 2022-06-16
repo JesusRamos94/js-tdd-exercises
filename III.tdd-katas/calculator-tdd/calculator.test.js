@@ -1,4 +1,4 @@
-const {add} = require("./calculator.js");
+const { add } = require("./calculator.js");
 
 describe("given the add function", () => {
   it("Given an empty string as input, it should return 0.", () => {
@@ -9,7 +9,7 @@ describe("given the add function", () => {
 
     // Act
 
-    const result = add(input)
+    const result = add(input);
 
     // Assert
 
@@ -24,7 +24,7 @@ describe("given the add function", () => {
 
     // Act
 
-    const result = add(input)
+    const result = add(input);
 
     // Assert
 
@@ -39,7 +39,7 @@ describe("given the add function", () => {
 
     // Act
 
-    const result = add(input)
+    const result = add(input);
 
     // Assert
 
@@ -54,7 +54,7 @@ describe("given the add function", () => {
 
     // Act
 
-    const result = add(input)
+    const result = add(input);
 
     // Assert
 
@@ -69,7 +69,7 @@ describe("given the add function", () => {
 
     // Act
 
-    const result = add(input)
+    const result = add(input);
 
     // Assert
 
@@ -84,7 +84,7 @@ describe("given the add function", () => {
 
     // Act
 
-    const result = add(input)
+    const result = add(input);
 
     // Assert
 
@@ -99,40 +99,105 @@ describe("given the add function", () => {
 
     // Act
 
-    const result = add(input)
+    const result = add(input);
 
     // Assert
 
     expect(result).toEqual(expected);
   });
-  
+
   it("given the input '-2,2,-3' it should return the value of the negative numbers '-2,-3' ", () => {
     // Arrange
 
-    const expectedToThrow = () => add("-2,2,-3")
-
+    const expectedToThrow = () => add("-2,2,-3");
 
     // Act && Assert
 
     expect(expectedToThrow).toThrowError("Negatives not allowed");
-
   });
 
   it("given the input '2,1001' you should ignore numbers greater than or equal to 1000", () => {
+    // Arrange
 
-        // Arrange
+    const input = "2,1001";
+    const expected = 2;
 
-        const input = "2,1001";
-        const expected = 2;
-    
-        // Act
-    
-        const result = add(input)
-    
-        // Assert
-    
-        expect(result).toEqual(expected);
+    // Act
+
+    const result = add(input);
+
+    // Assert
+
+    expect(result).toEqual(expected);
   });
 
+  it("given input a number should return an error ", () => {
+    // Arrange
 
+    const expectedToThrow = () => add(2);
+
+    // Act && Assert
+
+    expect(expectedToThrow).toThrowError("invalid param");
+  });
+
+  it("given input a array should return an error", () => {
+    // Arrange
+
+    const expectedToThrow = () => add([]);
+
+    // Act && Assert
+
+    expect(expectedToThrow).toThrowError("invalid param");
+  });
+
+  it("given input a null should return an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => add(null);
+
+    // Act && Assert
+
+    expect(expectedToThrow).toThrowError("invalid param");
+  });
+
+  it("given input a undefined should return an error", () => {
+    // Arrange
+
+    const expectedToThrow = () => add(undefined);
+
+    // Act && Assert
+
+    expect(expectedToThrow).toThrowError("invalid param");
+  });
+
+  it("given input a object should return an error", () => {
+    // Arrange
+
+    const expectedToThrow = () => add({});
+
+    // Act && Assert
+
+    expect(expectedToThrow).toThrowError("invalid param");
+  });
+
+  it("given empty input  should return an error", () => {
+    // Arrange
+
+    const expectedToThrow = () => add();
+
+    // Act && Assert
+
+    expect(expectedToThrow).toThrowError("invalid param");
+  });
+
+  it("given input a NaN should return an error", () => {
+    // Arrange
+
+    const expectedToThrow = () => add(NaN);
+
+    // Act && Assert
+
+    expect(expectedToThrow).toThrowError("invalid param");
+  });
 });
