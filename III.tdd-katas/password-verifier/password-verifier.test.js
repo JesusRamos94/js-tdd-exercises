@@ -1,14 +1,15 @@
-const { verify } = require("./password-verifier.js");
+const { PasswordVerifier } = require("./password-verifier.js");
 
 describe("given the verify function", () => {
-  it("given the input Test123 should return an OK", () => {
+  it("given the input Test1234 should return an OK", () => {
     // Arrange
-    const input = "Test1234";
+
+    const input = new PasswordVerifier("Test1234");
     const expected = "OK";
 
     // Act
 
-    const result = verify(input);
+    const result = PasswordVerifier.verify(input.password);
 
     // Assert
 
@@ -17,102 +18,120 @@ describe("given the verify function", () => {
 
   it("given the input '123' should return an 'Your Password must be a least 8 characters'", () => {
     // Arrange
-    const expectedToThrow = () => verify("123");
+    const input = new PasswordVerifier("123")
+    const expectedToThrow = () => PasswordVerifier.verify(input.password);
 
     // Act && Assert
 
-    expect(expectedToThrow).toThrowError("Your Password must be a least 8 characters")
+    expect(expectedToThrow).toThrowError(
+      "Your Password must be a least 8 characters"
+    );
   });
 
   it("given the input 123 should return an 'Your password must contain letters and numbers'", () => {
     // Arrange
-    const expectedToThrow = () => verify(123);
+    const input = new PasswordVerifier(123)
+    const expectedToThrow = () => PasswordVerifier.verify(input.password);
 
     // Act && Assert
 
-    expect(expectedToThrow).toThrowError("Your password must contain letters and numbers")
+    expect(expectedToThrow).toThrowError(
+      "Your password must contain letters and numbers"
+    );
   });
 
   it("given the object input  should return an 'Your password must contain letters and numbers'", () => {
     // Arrange
-    const expectedToThrow = () => verify({});
+    const input = new PasswordVerifier({})
+    const expectedToThrow = () => PasswordVerifier.verify(input.password);
 
     // Act && Assert
 
-    expect(expectedToThrow).toThrowError("Your password must contain letters and numbers")
+    expect(expectedToThrow).toThrowError(
+      "Your password must contain letters and numbers"
+    );
   });
 
   it("given the array input should return an 'Your password must contain letters and numbers'", () => {
     // Arrange
-    const expectedToThrow = () => verify([]);
+    const input = new PasswordVerifier([])
+    const expectedToThrow = () => PasswordVerifier.verify(input.password);
 
     // Act && Assert
 
-    expect(expectedToThrow).toThrowError("Your password must contain letters and numbers")
+    expect(expectedToThrow).toThrowError(
+      "Your password must contain letters and numbers"
+    );
   });
 
   it("given the undefined input should return an 'Your password must contain letters and numbers'", () => {
     // Arrange
-    const expectedToThrow = () => verify(undefined);
+    const input = new PasswordVerifier(undefined)
+    const expectedToThrow = () => PasswordVerifier.verify(input.password);
 
     // Act && Assert
 
-    expect(expectedToThrow).toThrowError("Your password must contain letters and numbers")
+    expect(expectedToThrow).toThrowError(
+      "Your password must contain letters and numbers"
+    );
   });
 
   it("given the null array should return an 'Your password must contain letters and numbers'", () => {
     // Arrange
-    const expectedToThrow = () => verify(null);
+    const input = new PasswordVerifier(null)
+    const expectedToThrow = () => PasswordVerifier.verify(input.password);
 
     // Act && Assert
 
-    expect(expectedToThrow).toThrowError("Your password must contain letters and numbers")
+    expect(expectedToThrow).toThrowError(
+      "Your password must contain letters and numbers"
+    );
   });
 
   it("given the empty input should return an 'Your cannot enter an empty password'", () => {
     // Arrange
-    const expectedToThrow = () => verify("");
+    const input = new PasswordVerifier("")
+    const expectedToThrow = () => PasswordVerifier.verify(input.password);
 
     // Act && Assert
 
-    expect(expectedToThrow).toThrowError("Your cannot enter an empty password")
+    expect(expectedToThrow).toThrowError("Your cannot enter an empty password");
   });
 
   it("given the empty input should return an 'Your password must contain at least one lowercase letter'", () => {
     // Arrange
-    const expectedToThrow = () => verify("TEST12345");
+    const input = new PasswordVerifier("TEST12345")
+    const expectedToThrow = () => PasswordVerifier.verify(input.password);
 
     // Act && Assert
 
-    expect(expectedToThrow).toThrowError("Your password must contain at least one lowercase letter")
+    expect(expectedToThrow).toThrowError(
+      "Your password must contain at least one lowercase letter"
+    );
   });
 
   it("given the empty input should return an 'Your password must contain at least one uppercase letter'", () => {
     // Arrange
-    const expectedToThrow = () => verify("test12345");
+    const input = new PasswordVerifier("test12345")
+    const expectedToThrow = () => PasswordVerifier.verify(input.password);
 
     // Act && Assert
 
-    expect(expectedToThrow).toThrowError("Your password must contain at least one uppercase letter")
+    expect(expectedToThrow).toThrowError(
+      "Your password must contain at least one uppercase letter"
+    );
   });
 
   it("given the empty input should return an 'Your password must contain at least one digit'", () => {
     // Arrange
-    const expectedToThrow = () => verify("testTEST");
+    const input = new PasswordVerifier("testTEST")
+    const expectedToThrow = () => PasswordVerifier.verify(input.password);
 
     // Act && Assert
 
-    expect(expectedToThrow).toThrowError("Your password must contain at least one digit")
+    expect(expectedToThrow).toThrowError(
+      "Your password must contain at least one digit"
+    );
   });
-
-  it("given the empty input should return an 'Your password must contain at least one digit'", () => {
-    // Arrange
-    const expectedToThrow = () => verify("testTEST");
-
-    // Act && Assert
-
-    expect(expectedToThrow).toThrowError("Your password must contain at least one digit")
-  });
-
 
 });
