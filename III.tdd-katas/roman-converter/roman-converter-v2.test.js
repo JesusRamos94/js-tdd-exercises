@@ -183,9 +183,78 @@ describe("Given the function convertToOldRoman", () => {
 
     expect(result).toEqual(expected);
   });
+
+
+  it("given the input undefined when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => convertToOldRoman(undefined);
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param"); 
+  });
+
+  it("given the input undefined when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => convertToOldRoman(null);
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param"); 
+  });
+
+  it("given the input undefined when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => convertToOldRoman("String");
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param"); 
+  });
+
+  it("given the input undefined when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => convertToOldRoman(true);
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param"); 
+  });
+
+  it("given the input undefined when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => convertToOldRoman(false);
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param"); 
+  });
+
+  it("given the input undefined when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => convertToOldRoman();
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param"); 
+  });
+
+  it("given the input undefined when it calls the function it will throw an error ", () => {
+    // Arrange
+
+    const expectedToThrow = () => convertToOldRoman(0);
+
+    // Act & Assert
+
+    expect(expectedToThrow).toThrowError("Invalid param"); 
+  });
 });
-
-
 
 describe("Given the function convertToNewRoman", () => {
   it("given the input 1 when calls the function it will return 'I' ", () => {
@@ -370,7 +439,6 @@ describe("Given the function convertToNewRoman", () => {
     expect(result).toEqual(expected);
   });
 
-
   it("given the input undefined when it calls the function it will throw an error ", () => {
     // Arrange
 
@@ -378,92 +446,68 @@ describe("Given the function convertToNewRoman", () => {
 
     // Act & Assert
 
-    expect(expectedToThrow).toThrowError("Invalid param");
-  });
-});
-
-
-
-
-
-
-
-it("given a number when you call the function it will throw an error ", () => {
-    // Arrange
-
-    const expectedToThrow = () => addOne(12);
-
-    // Act & Assert
-
-    expect(expectedToThrow).toThrowError("Invalid param");
+    expect(expectedToThrow).toThrowError("Invalid param"); 
   });
 
   it("given the input undefined when it calls the function it will throw an error ", () => {
     // Arrange
 
-    const expectedToThrow = () => addOne(undefined);
+    const expectedToThrow = () => convertToNewRoman(null);
 
     // Act & Assert
 
-    expect(expectedToThrow).toThrowError("Invalid param");
+    expect(expectedToThrow).toThrowError("Invalid param"); 
   });
 
-  it("given the input null when it calls the function it will throw an error ", () => {
+  it("given the input undefined when it calls the function it will throw an error ", () => {
     // Arrange
 
-    const expectedToThrow = () => addOne(null);
+    const expectedToThrow = () => convertToNewRoman("String");
 
     // Act & Assert
 
-    expect(expectedToThrow).toThrowError("Invalid param");
+    expect(expectedToThrow).toThrowError("Invalid param"); 
   });
 
-  it("given the input false when it calls the function it will throw an error ", () => {
+  it("given the input undefined when it calls the function it will throw an error ", () => {
     // Arrange
 
-    const expectedToThrow = () => addOne(false);
+    const expectedToThrow = () => convertToNewRoman(true);
 
     // Act & Assert
 
-    expect(expectedToThrow).toThrowError("Invalid param");
+    expect(expectedToThrow).toThrowError("Invalid param"); 
   });
 
-  it("given the input true when it calls the function it will throw an error ", () => {
+  it("given the input undefined when it calls the function it will throw an error ", () => {
     // Arrange
 
-    const expectedToThrow = () => addOne(true);
+    const expectedToThrow = () => convertToNewRoman(false);
 
     // Act & Assert
 
-    expect(expectedToThrow).toThrowError("Invalid param");
+    expect(expectedToThrow).toThrowError("Invalid param"); 
   });
 
-  it("given the input -1 when it calls the function it will throw an error ", () => {
+  it("given the input undefined when it calls the function it will throw an error ", () => {
     // Arrange
 
-    const expectedToThrow = () => addOne(-1);
+    const expectedToThrow = () => convertToNewRoman();
 
     // Act & Assert
 
-    expect(expectedToThrow).toThrowError("Invalid param");
+    expect(expectedToThrow).toThrowError("Invalid param"); 
   });
 
-  it("given the input a number when it calls the function it will throw an error ", () => {
+  it("given the input undefined when it calls the function it will throw an error ", () => {
     // Arrange
 
-    const expectedToThrow = () => addOne(4);
+    const expectedToThrow = () => convertToNewRoman(0);
 
     // Act & Assert
 
-    expect(expectedToThrow).toThrowError("Invalid param");
+    expect(expectedToThrow).toThrowError("Invalid param"); 
   });
 
-  it("given the input a string when it calls the function it will throw an error ", () => {
-    // Arrange
 
-    const expectedToThrow = () => addOne("MobDev");
-
-    // Act & Assert
-
-    expect(expectedToThrow).toThrowError("Invalid param");
-  });
+});

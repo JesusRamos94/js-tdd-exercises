@@ -1,73 +1,78 @@
-class PasswordVerifier { 
-  constructor(password){
-  this.password = password
+class PasswordVerifier {
+  constructor(password) {
+    this.password = password;
   }
 
-  static verify (password)  {
+  verify() {
+    this.isNotNull();
     
-    if (isNotAString(password)) {
+    const required = [atLeastOneLowercaseLetter];
+    const validations = [
+      beLargerThan8,
+      atLeastOneCapitalLetter,
+      atLeastOneDigit,
+    ];
+
+    const requiredErrors = required
+      .map((req) => req(this.password))
+      .filter((err) => err !== "");
+
+    const validationsErrors = validations
+      .map((req) => req(this.password))
+      .filter((err) => err !== "");
+
+    if (
+      (!requiredErrors.length && !validationsErrors.length) ||
+      (!requiredErrors.length &&
+        validationsErrors.length >= validations.length - 1)
+    ) {
+      return "OK";
+    }
+
+    if (!requiredErrors.length && validationsErrors.length >= 1) {
+      const msg = validationsErrors.join();
+      throw new Error(msg);
+    } else {
+      const msg = requiredErrors.join();
+      throw new Error(msg);
+    }
+  }
+
+  isNotNull() {
+    if (this.password === null) {
       throw new Error("Your password must contain letters and numbers");
     }
-  
-    if (isNotEmptyPassword(password)) {
-      throw new Error("Your cannot enter an empty password");
-    }
-    
-    if (beLargerThan8(password)) {
-      throw new Error("Your Password must be a least 8 characters");
-    }
-  
-    if (atLeastOneLowercaseLetter(password)) {
-      throw new Error(
-        "Your password must contain at least one lowercase letter."
-      );
-    }
-  
-    if (atLeastOneCapitalLetter(password)) {
-      throw new Error(
-        "Your password must contain at least one uppercase letter."
-      );
-    }
-  
-    if (atLeastOneDigit(password)) {
-      throw new Error("Your password must contain at least one digit");
-    }
-  
-    return "OK";
-  };
-
+  }
 }
 
-
-const atLeastOneDigit = (password) => {
-  return password.search(/[0-9]/) < 0;
-};
-
-const atLeastOneLowercaseLetter = (password) => {
-  return password.search(/[a-z]/) < 0;
-};
-
-const atLeastOneCapitalLetter = (password) => {
-  return password.search(/[A-Z]/) < 0;
+const beLargerThan8 = (password) => {
+  return password.length < 8
+    ? "Your Password must be a least 8 characters"
+    : "";
 };
 
 const isNotEmptyPassword = (password) => {
-  return password.length === 0;
+  return password.length === 0 ? "Your cannot enter an empty password" : "";
 };
 
-const beLargerThan8 = (password) => {
-  return password.length < 8;
+const atLeastOneCapitalLetter = (password) => {
+  return password.search(/[A-Z]/) < 0
+    ? "Your password must contain at least one uppercase letter."
+    : "";
 };
 
-const isNotAString = (password) => {
-  return typeof password !== "string";
+const atLeastOneLowercaseLetter = (password) => {
+  return password.search(/[a-z]/) < 0
+    ? "Your password must contain at least one lowercase letter."
+    : "";
 };
 
-//  const pass = new PasswordVerifier("");
-
-// console.log(PasswordVerifier.verify(pass.password));
+const atLeastOneDigit = (password) => {
+  return password.search(/[0-9]/) < 0
+    ? "Your password must contain at least one digit"
+    : "";
+};
 
 module.exports = {
-  PasswordVerifier
+  PasswordVerifier,
 };
-

@@ -33,13 +33,14 @@ const filtersAndReturnsNegativeValues = (numberString, newNumberString) => {
 
 const separateTransformAdd = (numberString) => {
   return numberString
-    .split(/[\s,;.+]/g)
+    .split(/[\s,;.+-]/g)
     .map((e) => {
-      if (parseInt(e) >= 1000) {
+      if (parseInt(e) >= 1000 || typeof parseInt(e) !== "number") {
+        
         return (e = 0);
       }
       return parseInt(e);
-    })
+    }).filter(e => !Number.isNaN(e))
     .reduce((acc, curr) => (acc += curr));
 };
 
@@ -53,3 +54,4 @@ const notStringValue = (numberString) => {
 const theValueIsEmpty = (numberString) => {
   return numberString === "";
 };
+

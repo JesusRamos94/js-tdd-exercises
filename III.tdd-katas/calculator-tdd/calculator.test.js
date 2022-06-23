@@ -76,6 +76,22 @@ describe("given the add function", () => {
     expect(result).toEqual(expected);
   });
 
+  it("given an input with a numbers in the string it should return the same number", () => {
+    // Arrange
+
+    const input = "//;\n1;2";
+    const expected = 3;
+
+    // Act
+
+    const result = add(input);
+  
+
+    // Assert
+
+    expect(result).toEqual(expected);
+  });
+
   it("given the input with numbers in string separated by different special characters returns the sum of all numbers", () => {
     // Arrange
 

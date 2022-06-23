@@ -1,15 +1,15 @@
-const { PasswordVerifier } = require("./password-verifier.js");
+const { verify } = require("./password-verifier-function.js");
 
 describe("given the verify function", () => {
   it("given the input Test1234 should return an OK", () => {
     // Arrange
 
-    const input = new PasswordVerifier("Test1234");
+    const input = "Test1234";
     const expected = "OK";
 
     // Act
 
-    const result = input.verify();
+    const result = verify(input);
 
     // Assert
 
@@ -18,8 +18,8 @@ describe("given the verify function", () => {
 
   it("given the null array should return an 'Your password must contain letters and numbers'", () => {
     // Arrange
-    const input = new PasswordVerifier(null);
-    const expectedToThrow = () => PasswordVerifier.verify(input.verify());
+    const input = null;
+    const expectedToThrow = () => verify(input);
 
     // Act && Assert
 
@@ -30,8 +30,8 @@ describe("given the verify function", () => {
 
   it("given the empty input should return an 'Your password must contain at least one lowercase letter'", () => {
     // Arrange
-    const input = new PasswordVerifier("TEST12345");
-    const expectedToThrow = () => PasswordVerifier.verify(input.verify());
+    const input = "TEST12345";
+    const expectedToThrow = () => verify(input);
 
     // Act && Assert
 
@@ -42,8 +42,8 @@ describe("given the verify function", () => {
 
   it("given the empty input should return an 'Your password must contain at least one uppercase letter'", () => {
     // Arrange
-    const input = new PasswordVerifier("test12345");
-    const expectedToThrow = () => PasswordVerifier.verify(input.verify());
+    const input = "test12345";
+    const expectedToThrow = () => verify(input);
 
     // Act && Assert
 
@@ -54,8 +54,8 @@ describe("given the verify function", () => {
 
   it("given the empty input should return an 'Your password must contain at least one digit'", () => {
     // Arrange
-    const input = new PasswordVerifier("testTEST");
-    const expectedToThrow = () => PasswordVerifier.verify(input.verify());
+    const input = "testTEST";
+    const expectedToThrow = () => verify(input);
 
     // Act && Assert
 
@@ -66,8 +66,8 @@ describe("given the verify function", () => {
 
   it("given the input with less than 8 characters when it calls the functions will throw an error'", () => {
     // Arrange
-    const input = new PasswordVerifier("Test12");
-    const expectedToThrow = () => PasswordVerifier.verify(input.verify());
+    const input = "Test12";
+    const expectedToThrow = () => verify(input);
 
     // Act && Assert
 
@@ -79,16 +79,15 @@ describe("given the verify function", () => {
   it("given the input a1 should return an OK", () => {
     // Arrange
 
-    const input = new PasswordVerifier("a1");
+    const input = "a1";
     const expected = "OK";
 
     // Act
 
-    const result = input.verify(input.verify());
+    const result = verify(input);
 
     // Assert
 
     expect(result).toEqual(expected);
   });
 });
-

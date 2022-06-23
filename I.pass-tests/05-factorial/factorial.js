@@ -25,6 +25,8 @@ const factorial = (int) => {
 module.exports = {
   factorial,
 };
+
+
 const isNotValidParam = (int) => {
   return isNotANumber(int) || isNotANumberValid(int);
 };
